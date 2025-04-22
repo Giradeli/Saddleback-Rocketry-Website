@@ -63,4 +63,4 @@ jobs:
           name: ${{ steps.semver.outputs.next }}
           tag: ${{ steps.semver.outputs.next }}
           commit: ${{ github.sha }}
-        #   token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
