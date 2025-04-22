@@ -42,7 +42,7 @@ jobs:
       - name: Zip Dist
         uses: thedoctor0/zip-release@0.7.6
         with:
-          directory: "dist"
+          path: "dist"
           type: "zip"
           filename: "dist.zip"
           exclusions: "/node_modules/* .yarn/*"
