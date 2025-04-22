@@ -1,0 +1,60 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Build Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Version Code
+        id: semver
+        uses: ietf-tools/semver-action@v1
+        with:
+          token: ${{ github.token }}
+          branch: main
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "yarn"
+
+      - run: yarn
+
+      - run: yarn build
+
+      - name: Zip Dist
+        uses: thedoctor0/zip-release@0.7.6
+        with:
+          directory: "dist"
+          type: "zip"
+          filename: "dist.zip"
+
+      - name: Zip source
+        uses: thedoctor0/zip-release@0.7.6
+        with:
+          directory: "."
+          type: "zip"
+          filename: "source.zip"
+          exclusions: "/dist/ *.code-workspace /node_modules/ .yarn/"
+
+      - name: Upload Release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: "dist.zip,source.zip"
+          artifactContentType: "application/zip"
+          makeLatest: true
+          name: v${{ steps.semver.outputs.next }}
+        #   token: ${{ secrets.GITHUB_TOKEN }}
