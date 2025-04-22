@@ -20,7 +20,6 @@ jobs:
         uses: ietf-tools/semver-action@v1
         with:
           token: ${{ github.token }}
-          #   fallbackTag: "v1.0.0"
           skipInvalidTags: true
           noVersionBumpBehavior: "patch"
           noNewCommitBehavior: "warn"
@@ -45,6 +44,7 @@ jobs:
           directory: "dist"
           type: "zip"
           filename: "dist.zip"
+          exclusions: "/node_modules/* .yarn/*"
 
       - name: Zip source
         uses: thedoctor0/zip-release@0.7.6
@@ -52,7 +52,7 @@ jobs:
           directory: "."
           type: "zip"
           filename: "source.zip"
-          exclusions: "/dist/ *.code-workspace /node_modules/ .yarn/"
+          exclusions: "/dist/* /node_modules/* .yarn/*"
 
       - name: Upload Release
         uses: ncipollo/release-action@v1.12.0
@@ -60,5 +60,7 @@ jobs:
           artifacts: "dist.zip,source.zip"
           artifactContentType: "application/zip"
           makeLatest: true
-          name: v${{ steps.semver.outputs.next }}
+          name: ${{ steps.semver.outputs.next }}
+          tag: ${{ steps.semver.outputs.next }}
+          commit: ${{ github.sha }}
         #   token: ${{ secrets.GITHUB_TOKEN }}
