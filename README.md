@@ -80,7 +80,7 @@ root
    ```
 2. Navigate to the project directory:
    ```bash
-   cd saddleback-rocketry
+   cd Saddleback-Rocketry-Website
    ```
 3. Install dependencies:
    ```bash
