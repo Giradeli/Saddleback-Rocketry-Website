@@ -1,0 +1,64 @@
+{
+  "folders": [
+    {
+      "path": ".",
+    },
+  ],
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "yarn: dev",
+        "command": "yarn dev",
+        "type": "shell",
+        "isBackground": true,
+        "args": [],
+        "problemMatcher": [
+          {
+            "base": "$tsc-watch",
+            "background": {
+              "activeOnStart": true,
+              "beginsPattern": "VITE v\\d+\\.\\d+\\.\\d+",
+              "endsPattern": "http.+:5173",
+            },
+          },
+        ],
+        "presentation": {
+          "reveal": "always",
+        },
+        "group": "build",
+      },
+    ],
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch Chrome",
+        "request": "launch",
+        "type": "chrome",
+        "url": "http://localhost:5173",
+        "webRoot": "${workspaceFolder}",
+        "preLaunchTask": "yarn: dev",
+      },
+    ],
+    "compounds": [],
+  },
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "workbench.colorCustomizations": {
+      "statusBar.background": "#FDBE55",
+      "statusBar.foreground": "#000000",
+      "titleBar.activeBackground": "#B40838",
+    },
+  },
+  "extensions": {
+    "recommendations": [
+      "dsznajder.es7-react-js-snippets",
+      "dbaeumer.vscode-eslint",
+      "rvest.vs-code-prettier-eslint",
+      "esbenp.prettier-vscode",
+    ],
+  },
+}
