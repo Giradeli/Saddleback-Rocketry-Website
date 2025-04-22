@@ -46,18 +46,10 @@ jobs:
           filename: "dist.zip"
           exclusions: "/node_modules/* .yarn/*"
 
-      - name: Zip source
-        uses: thedoctor0/zip-release@0.7.6
-        with:
-          directory: "."
-          type: "zip"
-          filename: "source.zip"
-          exclusions: "/dist/* /node_modules/* .yarn/*"
-
       - name: Upload Release
         uses: ncipollo/release-action@v1.12.0
         with:
-          artifacts: "dist.zip,source.zip"
+          artifacts: "dist.zip"
           artifactContentType: "application/zip"
           makeLatest: true
           name: ${{ steps.semver.outputs.next }}
