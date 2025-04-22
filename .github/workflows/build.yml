@@ -22,6 +22,8 @@ jobs:
           token: ${{ github.token }}
           #   fallbackTag: "v1.0.0"
           skipInvalidTags: true
+          noVersionBumpBehavior: "patch"
+          noNewCommitBehavior: "warn"
           branch: main
 
       - name: Enable Corepack
