@@ -10,6 +10,7 @@ type Props = {
   crossOrigin?: "anonymous" | "use-credentials" | undefined;
   scaleToW?: number;
   scaleToH?: number;
+  disableSkeleton?: boolean;
 };
 
 export const Image = (props: Props) => {
@@ -74,7 +75,7 @@ export const Image = (props: Props) => {
         }}
         onLoad={() => setLoaded(true)}
       />
-      {!loaded && (
+      {!loaded && !props.disableSkeleton && (
         <Skeleton variant="rectangular" width={"100%"} height={"100%"} />
       )}
     </>

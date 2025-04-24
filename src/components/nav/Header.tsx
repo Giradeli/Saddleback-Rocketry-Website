@@ -61,6 +61,7 @@ export const Header = () => {
                     alt="Saddleback Rocketry"
                     crossOrigin="anonymous"
                     style={{ boxShadow: "unset" }}
+                    disableSkeleton
                   />
                   <Typography
                     sx={(theme) => ({

@@ -83,6 +83,7 @@ export const Loader = (props: Props) => {
           <Image
             src={roundLogo}
             style={{ boxShadow: "unset", width: "50%", height: "50%" }}
+            disableSkeleton
           />
         </Box>
         <Box
