@@ -7,6 +7,8 @@ type Props = {
   refKey: string;
   fallback?: string;
   style?: React.CSSProperties;
+  scaleToW?: number;
+  scaleToH?: number;
 };
 
 export const ImageReference = (props: Props) => {
@@ -21,6 +23,8 @@ export const ImageReference = (props: Props) => {
       fallback={props.fallback}
       src={imageUrl}
       style={props.style}
+      scaleToH={props.scaleToH}
+      scaleToW={props.scaleToW}
     />
   );
 };

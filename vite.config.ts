@@ -5,15 +5,4 @@ import { nodePolyfills } from "vite-plugin-node-polyfills";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), nodePolyfills()],
-  server: {
-    fs: {
-      deny: ["/cdn-cgi/*"],
-    },
-    proxy: {
-      // "/cdn-cgi": {
-      //   target: "0.0.0.0",
-      //   changeOrigin: false,
-      // },
-    },
-  },
 });

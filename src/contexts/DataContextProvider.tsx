@@ -39,8 +39,8 @@ export const DataContextProvider = (props: Props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const loadData = async () => {
-      setLoading(true);
       const promises: Promise<unknown>[] = [];
       promises.push(getTeamsPromise());
       promises.push(getTeamMembersPromise());
@@ -56,6 +56,15 @@ export const DataContextProvider = (props: Props) => {
       setLoading(false);
     };
 
+    const interval = setInterval(
+      () => {
+        console.log("refreshing");
+        loadData();
+      },
+      1 * 60 * 1000,
+    ); // 1 minutes
+
+    // #region Promises
     const getTeamsPromise = async () => {
       const teams = await getTeams();
       setTeams(teams);
@@ -92,8 +101,12 @@ export const DataContextProvider = (props: Props) => {
       const subTeams = await getSubTeams();
       setSubTeams(subTeams);
     };
-
+    // #endregion
     loadData();
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   const value: DataContextModel = {

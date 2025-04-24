@@ -36,19 +36,6 @@ export const ImageProxyContextProvider = ({ isEnabled, children }: Props) => {
     return proxyUrl;
   };
 
-  // useEffect(() => {
-  //   getProxyUrl("/test/test.png");
-  //   getProxyUrl("/test.png", {
-  //     fit: undefined,
-  //     width: undefined,
-  //     format: undefined,
-  //     quality: undefined,
-  //     height: undefined,
-  //     compression: undefined,
-  //     metadata: undefined,
-  //   });
-  // }, []);
-
   return (
     <ImageProxyContext.Provider value={{ isEnabled, getProxyUrl }}>
       {children}

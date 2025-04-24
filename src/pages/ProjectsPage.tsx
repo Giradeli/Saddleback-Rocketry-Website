@@ -25,7 +25,7 @@ export const ProjectsPage = () => {
           <Box>
             {projects.map((project) => {
               return (
-                <Box>
+                <Box key={project.name}>
                   <Divider
                     sx={(theme) => ({
                       margin: `${theme.spacing(4)} 0`,
@@ -38,9 +38,13 @@ export const ProjectsPage = () => {
                       justifyContent: "space-between",
                       flexWrap: "wrap-reverse",
                     })}
-                    key={project.name}
                   >
-                    <Box sx={{ maxWidth: { xs: "100%", lg: "35%" } }}>
+                    <Box
+                      sx={{
+                        maxWidth: { xs: "100%", lg: "35%" },
+                        width: { xs: "100%" },
+                      }}
+                    >
                       <Image
                         alt={project.name}
                         src={project.imageUrl}
@@ -67,7 +71,7 @@ export const ProjectsPage = () => {
                             justifyContent: "space-between",
                             alignItems: "center",
                             marginBottom: 2,
-                            flexWrap: "wrap",
+                            flexWrap: "nowrap",
                           }}
                         >
                           <Typography variant="h4">{project.name}</Typography>

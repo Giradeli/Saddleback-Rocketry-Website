@@ -1,11 +1,9 @@
-import { useEffect } from "react";
 import { useDataContext } from "../contexts/Hooks";
 
 type Props = {
   refKey: string;
 };
 
-const newLineRegex = /((?<!\\)\\n)/g;
 const splitRegex = /(?:(?:(?<!\\)\\n)|$)/g;
 
 export const TextReference = (props: Props) => {
@@ -15,17 +13,7 @@ export const TextReference = (props: Props) => {
 
   const lines = text
     .split(splitRegex)
-    .filter((line) => Boolean(line?.replace(newLineRegex, "").trim()))
-    .map((line) => line.replace("\\\\", "\\"));
-
-  useEffect(() => {
-    const test = "line1\\nline2\\n\\nline4\\\\nline4";
-    const test2 = test
-      .split(splitRegex)
-      // .filter((line) => Boolean(line?.replace  All(newLineRegex, "").trim()))
-      .map((line) => line.replaceAll("\\\\", "\\"));
-    console.log(test2);
-  }, []);
+    .map((line) => line.replace("\\\\", "\\").trim());
 
   const lineElements = lines.map((line, i) => {
     return (

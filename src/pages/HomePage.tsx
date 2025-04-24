@@ -206,21 +206,29 @@ export const HomePage = () => {
           <ImageReference
             refKey="home.gallery-1"
             style={{ width: "256px", height: "256px" }}
+            scaleToH={256}
+            scaleToW={256}
             fallback={gallery1Placeholder}
           />
           <ImageReference
             refKey="home.gallery-2"
             style={{ width: "256px", height: "256px" }}
+            scaleToH={256}
+            scaleToW={256}
             fallback={gallery2Placeholder}
           />
           <ImageReference
             refKey="home.gallery-3"
             style={{ width: "256px", height: "256px" }}
+            scaleToH={256}
+            scaleToW={256}
             fallback={gallery3Placeholder}
           />
           <ImageReference
             refKey="home.gallery-4"
             style={{ width: "256px", height: "256px" }}
+            scaleToH={256}
+            scaleToW={256}
             fallback={gallery4Placeholder}
           />
         </Box>

@@ -26,7 +26,7 @@ export const Page = (props: Props) => {
       sx={[
         (theme) => ({
           padding: {
-            xs: `${theme.spacing(4)} ${theme.spacing(8)}`,
+            xs: `${theme.spacing(4)} ${theme.spacing(2)}`,
             md: `${theme.spacing(8)} ${theme.spacing(16)}`,
           },
         }),
