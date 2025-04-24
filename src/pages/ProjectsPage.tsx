@@ -11,6 +11,7 @@ import { useDataContext } from "../contexts/Hooks";
 import { Image } from "../components/Image";
 import { Page } from "../components/Page";
 import logo from "../assets/logo.png";
+import { Text } from "../components/Text";
 
 export const ProjectsPage = () => {
   const { projects } = useDataContext();
@@ -74,12 +75,14 @@ export const ProjectsPage = () => {
                             flexWrap: "nowrap",
                           }}
                         >
-                          <Typography variant="h4">{project.name}</Typography>
+                          <Typography variant="h4">
+                            <Text text={project.name} />
+                          </Typography>
                           <Chip color="primary" label={project.year} />
                         </Box>
                         <Box>
                           <Typography variant="body2">
-                            {project.description}
+                            <Text text={project.description} />
                           </Typography>
                         </Box>
                       </Paper>

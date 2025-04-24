@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { TextReference } from "../components/TextReference";
 import { Image } from "../components/Image";
+import { Text } from "../components/Text";
 
 export const SubTeamsPage = () => {
   const { subTeams } = useDataContext();
@@ -80,6 +81,7 @@ export const SubTeamsPage = () => {
                         paddingTop: 2,
                         paddingBottom: 2,
                         borderRadius: `4px 0 0 4px`,
+                        display: { xs: "none", md: "block" },
                       })}
                     >
                       <Typography
@@ -93,14 +95,22 @@ export const SubTeamsPage = () => {
                       </Typography>
                     </Box>
                     <Box sx={{ padding: 2 }}>
-                      <Typography variant="h4">{subTeam.name}</Typography>
+                      <Typography variant="h4">
+                        <Text text={subTeam.name} />
+                      </Typography>
                       <Typography variant="body2">
-                        {subTeam.description}
+                        <Text text={subTeam.description} />
                       </Typography>
                     </Box>
                   </Paper>
                   {subTeam.imageUrl && (
-                    <Box sx={{ maxWidth: "30%", flexShrink: 0 }}>
+                    <Box
+                      sx={{
+                        maxWidth: "30%",
+                        flexShrink: 0,
+                        display: { xs: "none", md: "block" },
+                      }}
+                    >
                       <Image
                         style={{
                           width: "100%",
