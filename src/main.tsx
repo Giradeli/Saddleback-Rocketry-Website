@@ -15,7 +15,8 @@ const url = `/cdn-cgi/image/compression=fast,format=webp,metadata=none//favicon.
 fetch(url)
   .then((response) => {
     renderRoot(
-      response.ok && response.headers.get("Content-Type") === "image/webp",
+      response.ok &&
+        Boolean(response.headers.get("Content-Type")?.startsWith("image/")),
     );
   })
   .catch(() => {
