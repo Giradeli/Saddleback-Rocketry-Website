@@ -1,8 +1,10 @@
 import { Box, Container, Link, Paper, Typography } from "@mui/material";
 import { TextReference } from "../components/TextReference";
 import { Page } from "../components/Page";
+import { useNavigate } from "react-router";
 
 export const DonationPage = () => {
+  const navigate = useNavigate();
   return (
     <Page name="Donate">
       <Container
@@ -13,7 +15,7 @@ export const DonationPage = () => {
           <Box
             sx={{ width: { xs: "100%", lg: "50%" }, padding: 4, paddingTop: 0 }}
           >
-            <Typography variant="h3" textAlign={"center"} gutterBottom>
+            <Typography variant="h2" textAlign={"center"} gutterBottom>
               <TextReference refKey="donate.header" />
             </Typography>
             <Typography variant="body2">
@@ -24,7 +26,7 @@ export const DonationPage = () => {
           <Box
             sx={{ width: { xs: "100%", lg: "50%" }, padding: 4, paddingTop: 0 }}
           >
-            <Typography variant="h3" textAlign={"center"} gutterBottom>
+            <Typography variant="h2" textAlign={"center"} gutterBottom>
               Saddleback College Foundation
             </Typography>
             <Typography gutterBottom variant="body2">
@@ -149,7 +151,15 @@ export const DonationPage = () => {
                 <Typography display={"inline"} variant="body2">
                   If you would like to support us in another way, please reach
                   out to us on our{" "}
-                  <Link sx={{ fontWeight: "500" }} href="/contact">
+                  <Link
+                    onClick={() => navigate("/contact")}
+                    sx={{
+                      fontWeight: "500",
+                      ":hover": {
+                        cursor: "pointer",
+                      },
+                    }}
+                  >
                     Contact
                   </Link>{" "}
                   page.

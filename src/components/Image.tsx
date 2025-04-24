@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useImageProxy } from "../contexts/Hooks";
+import Skeleton from "@mui/material/Skeleton";
 
 type Props = {
   alt?: string;
@@ -6,10 +8,24 @@ type Props = {
   fallback?: string;
   style?: React.CSSProperties;
   crossOrigin?: "anonymous" | "use-credentials" | undefined;
+  scaleToW?: number;
+  scaleToH?: number;
 };
 
 export const Image = (props: Props) => {
+  const [loaded, setLoaded] = useState(false);
+  const { getProxyUrl } = useImageProxy();
+
+  const scaleToWidth = props.scaleToW ?? 1024;
+  const scaleToHeight = props.scaleToH ?? 1024;
+
   const imageUrl = props.src ? props.src : props.fallback;
+  const proxyUrl = getProxyUrl(imageUrl ?? "", {
+    height: scaleToHeight,
+    width: scaleToWidth,
+  });
+
+  const url = proxyUrl ? proxyUrl : imageUrl;
 
   if (!imageUrl) {
     return (
@@ -43,14 +59,24 @@ export const Image = (props: Props) => {
   };
 
   return (
-    <img
-      style={style}
-      alt={props.alt}
-      src={imageUrl}
-      crossOrigin={props.crossOrigin}
-      onError={(e) => {
-        e.currentTarget.src = props.fallback ?? "";
-      }}
-    />
+    <>
+      <img
+        style={{
+          ...style,
+          display: loaded ? undefined : "none",
+          userSelect: "none",
+        }}
+        alt={props.alt}
+        src={url}
+        crossOrigin={props.crossOrigin}
+        onError={(e) => {
+          e.currentTarget.src = props.fallback ?? "";
+        }}
+        onLoad={() => setLoaded(true)}
+      />
+      {!loaded && (
+        <Skeleton variant="rectangular" width={"100%"} height={"100%"} />
+      )}
+    </>
   );
 };

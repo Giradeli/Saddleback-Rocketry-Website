@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Page } from "../components/Page";
-import { useDataContext } from "../contexts/DataContext";
+import { useDataContext } from "../contexts/Hooks";
 import {
   Box,
   Button,
@@ -22,10 +22,10 @@ export const SubTeamsPage = () => {
         <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
           <Box>
             <Box>
-              <Typography variant="h3" gutterBottom>
+              <Typography variant="h2" gutterBottom>
                 <TextReference refKey="subteams.header" />
               </Typography>
-              <Typography>
+              <Typography variant="subtitle1">
                 <TextReference refKey="subteams.subheader" />
               </Typography>
             </Box>
@@ -74,6 +74,7 @@ export const SubTeamsPage = () => {
                   >
                     <Box
                       sx={(theme) => ({
+                        userSelect: "none",
                         flexShrink: 0,
                         backgroundColor: theme.palette.secondary.main,
                         paddingTop: 2,

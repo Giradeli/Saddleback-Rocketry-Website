@@ -11,6 +11,21 @@ type Props = {
 export const Loader = (props: Props) => {
   const [visible, setVisible] = useState(true);
 
+  const [textEllipsis, setTextEllipsis] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTextEllipsis((prev) => {
+        if (textEllipsis.length >= 3) {
+          return "";
+        } else return prev + ".";
+      });
+    }, 500);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [textEllipsis.length]);
+
   useEffect(() => {
     if (props.loading) {
       setVisible(true);
@@ -26,6 +41,7 @@ export const Loader = (props: Props) => {
   return (
     <Box
       sx={(theme) => ({
+        userSelect: "none",
         pointerEvents: props.loading ? "all" : "none",
         position: "fixed",
         width: "100vw",
@@ -71,8 +87,8 @@ export const Loader = (props: Props) => {
         </Box>
         <Box
           sx={(theme) => ({
-            width: { xs: "75%", md: "95%" },
-            height: { xs: "75%", md: "95%" },
+            width: { xs: "75%", md: "90%", lg: "75%" },
+            height: { xs: "75%", md: "90%", lg: "75%" },
             "@keyframes rotate": {
               from: {
                 transform: "rotate(0deg)",
@@ -81,7 +97,7 @@ export const Loader = (props: Props) => {
                 transform: "rotate(360deg)",
               },
             },
-            animation: "rotate 2s linear infinite",
+            animation: "rotate 2.5s linear infinite",
             "& svg": {
               fill: theme.palette.secondary.main,
             },
@@ -89,14 +105,25 @@ export const Loader = (props: Props) => {
         >
           <RocketLaunchIcon
             sx={{
-              width: { xs: "32px", md: "64px" },
-              height: { xs: "32px", md: "64px" },
+              width: { xs: "48px", md: "64px" },
+              height: { xs: "48px", md: "64px" },
             }}
           />
         </Box>
       </Box>
-      <Typography variant="h5" color="secondary" textAlign={"center"}>
-        Loading...
+      <Typography
+        variant="h5"
+        color="secondary"
+        textAlign={"center"}
+        minWidth={200}
+        sx={{
+          ":after": {
+            position: "absolute",
+            content: `'${textEllipsis}'`,
+          },
+        }}
+      >
+        Loading
       </Typography>
     </Box>
   );

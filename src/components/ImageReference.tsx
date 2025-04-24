@@ -1,5 +1,5 @@
 import React from "react";
-import { useDataContext } from "../contexts/DataContext";
+import { useDataContext } from "../contexts/Hooks";
 import { Image } from "./Image";
 
 type Props = {
@@ -14,6 +14,7 @@ export const ImageReference = (props: Props) => {
   const reference = imageReferences.find((ref) => ref.key === props.refKey);
   let imageUrl = reference?.imageUrl ? reference.imageUrl : props.fallback;
   imageUrl = imageUrl?.replace(/\?.+$/, "");
+
   return (
     <Image
       alt={props.alt}

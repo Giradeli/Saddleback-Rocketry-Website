@@ -15,7 +15,10 @@ export const FooterSection = (props: Props) => {
         justifyContent: "center",
       }}
     >
-      <Typography sx={{ textAlign: { xs: "center", md: "left" } }} variant="h4">
+      <Typography
+        sx={{ textAlign: { xs: "center", md: "left" }, userSelect: "none" }}
+        variant="h4"
+      >
         {props.name}
       </Typography>
       {props.children}

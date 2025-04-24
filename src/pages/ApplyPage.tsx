@@ -10,6 +10,7 @@ import React from "react";
 import { ImageReference } from "../components/ImageReference";
 import { TextReference } from "../components/TextReference";
 import { Page } from "../components/Page";
+import logo from "../assets/logo.png";
 
 export const ApplyPage = () => {
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -53,6 +54,7 @@ export const ApplyPage = () => {
             </Box>
             <Box sx={{ width: { xs: "100%", lg: "40%" }, flexGrow: 1 }}>
               <ImageReference
+                fallback={logo}
                 refKey="apply.poster"
                 style={{ width: "100%", height: "auto" }}
               />

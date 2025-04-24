@@ -6,23 +6,35 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { Buffer } from "buffer";
-import { DataContextProvider } from "./contexts/DataContext.tsx";
+import { DataContextProvider } from "./contexts/DataContextProvider.tsx";
 import { ThemeProvider } from "@emotion/react";
 import { saddlebackTheme } from "./themes/saddleback.ts";
+import { ImageProxyContextProvider } from "./contexts/ImageProxyContextProvider.tsx";
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <DataContextProvider>
-      <ThemeProvider theme={saddlebackTheme}>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
-      </ThemeProvider>
-    </DataContextProvider>
-  </StrictMode>,
-);
+const url = `/cdn-cgi/image/compression=fast,format=webp,metadata=none//favicon.png`;
+fetch(url)
+  .then((response) => {
+    renderRoot(
+      response.ok && response.headers.get("Content-Type") === "image/webp",
+    );
+  })
+  .catch(() => {
+    renderRoot(false);
+  });
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-window.Buffer = Buffer;
+const renderRoot = (imgProxyEnabled: boolean) => {
+  console.log("Image Proxy Enabled:", imgProxyEnabled);
+  createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+      <ImageProxyContextProvider isEnabled={imgProxyEnabled}>
+        <DataContextProvider>
+          <ThemeProvider theme={saddlebackTheme}>
+            <BrowserRouter>
+              <AppRoutes />
+            </BrowserRouter>
+          </ThemeProvider>
+        </DataContextProvider>
+      </ImageProxyContextProvider>
+    </StrictMode>,
+  );
+};

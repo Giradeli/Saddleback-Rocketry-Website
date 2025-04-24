@@ -16,10 +16,11 @@ export const Sponsor = (props: Props) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        userSelect: "none",
       }}
     >
-      {props.imageUrl && (
-        <a href={props.link}>
+      <a href={props.link}>
+        {props.imageUrl && (
           <img
             style={{
               height: height,
@@ -30,27 +31,32 @@ export const Sponsor = (props: Props) => {
             alt={props.name}
             src={props.imageUrl}
           />
-        </a>
-      )}
-      {props.name && (
-        <Box
-          sx={(theme) => ({
-            width: "256px",
-            padding: theme.spacing(2),
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: theme.palette.background.paper,
-            border: `2px solid ${theme.palette.common.black}`,
-            boxShadow:
-              "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
-          })}
-        >
-          <Typography textAlign={"center"} fontSize={"2.2rem"} fontWeight={500}>
-            {props.name}
-          </Typography>
-        </Box>
-      )}
+        )}
+        {props.name && (
+          <Box
+            sx={(theme) => ({
+              width: "256px",
+              padding: theme.spacing(2),
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: theme.palette.background.paper,
+              border: `2px solid ${theme.palette.common.black}`,
+              boxShadow:
+                "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+            })}
+          >
+            <Typography
+              sx={{ userSelect: "none" }}
+              textAlign={"center"}
+              fontSize={"2.2rem"}
+              fontWeight={500}
+            >
+              {props.name}
+            </Typography>
+          </Box>
+        )}
+      </a>
     </Box>
   );
 };

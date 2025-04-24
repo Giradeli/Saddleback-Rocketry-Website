@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { TeamMember } from "../components/TeamMember";
 import { Team } from "../components/Team";
-import { useDataContext } from "../contexts/DataContext";
+import { useDataContext } from "../contexts/Hooks";
 import { Page } from "../components/Page";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { TextReference } from "../components/TextReference";

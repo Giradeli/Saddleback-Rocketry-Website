@@ -48,6 +48,7 @@ export const NavMenu = () => {
     <Box component="nav">
       <Box
         sx={(theme) => ({
+          userSelect: "none",
           display: { xs: "none", xl: "flex" },
           gap: theme.spacing(4),
           "& a": {

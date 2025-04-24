@@ -1,8 +1,9 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
-import placeholder1 from "../assets/placeholder-1.jpg";
-import placeholder2 from "../assets/placeholder-2.jpg";
-import placeholder3 from "../assets/placeholder-3.jpg";
-import placeholder4 from "../assets/placeholder-4.jpg";
+import gallery1Placeholder from "../assets/gallery-1.jpg";
+import gallery2Placeholder from "../assets/gallery-2.jpg";
+import gallery3Placeholder from "../assets/gallery-3.jpg";
+import gallery4Placeholder from "../assets/gallery-4.jpg";
+import teamPhotoPlaceholder from "../assets/team-image-placeholder.png";
 import { useNavigate } from "react-router";
 import { SoMeButtons } from "../components/SoMeButtons";
 import { TextReference } from "../components/TextReference";
@@ -123,6 +124,8 @@ export const HomePage = () => {
         >
           <ImageReference
             refKey="global.team-photo"
+            fallback={teamPhotoPlaceholder}
+            alt="Our team"
             style={{ width: "100%" }}
           />
         </Box>
@@ -203,22 +206,22 @@ export const HomePage = () => {
           <ImageReference
             refKey="home.gallery-1"
             style={{ width: "256px", height: "256px" }}
-            fallback={placeholder1}
+            fallback={gallery1Placeholder}
           />
           <ImageReference
             refKey="home.gallery-2"
             style={{ width: "256px", height: "256px" }}
-            fallback={placeholder2}
+            fallback={gallery2Placeholder}
           />
           <ImageReference
             refKey="home.gallery-3"
             style={{ width: "256px", height: "256px" }}
-            fallback={placeholder3}
+            fallback={gallery3Placeholder}
           />
           <ImageReference
             refKey="home.gallery-4"
             style={{ width: "256px", height: "256px" }}
-            fallback={placeholder4}
+            fallback={gallery4Placeholder}
           />
         </Box>
       </Box>

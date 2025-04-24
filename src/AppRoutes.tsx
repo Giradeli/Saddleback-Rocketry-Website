@@ -13,7 +13,7 @@ import { SubTeamsPage } from "./pages/SubTeamsPage";
 import { ProjectsPage } from "./pages/ProjectsPage";
 import { OldMembersPage } from "./pages/OldMembersPage";
 import { Box } from "@mui/material";
-import { useDataContext } from "./contexts/DataContext";
+import { useDataContext } from "./contexts/Hooks";
 import { Loader } from "./Loader";
 
 export const AppRoutes = () => {

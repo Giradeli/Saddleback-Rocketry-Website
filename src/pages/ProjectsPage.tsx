@@ -7,16 +7,17 @@ import {
   Typography,
 } from "@mui/material";
 import { TextReference } from "../components/TextReference";
-import { useDataContext } from "../contexts/DataContext";
+import { useDataContext } from "../contexts/Hooks";
 import { Image } from "../components/Image";
 import { Page } from "../components/Page";
+import logo from "../assets/logo.png";
 
 export const ProjectsPage = () => {
   const { projects } = useDataContext();
 
   return (
     <Page name="Projects">
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Box>
           <Typography variant="h2" gutterBottom>
             <TextReference refKey="projects.header" />
@@ -44,6 +45,7 @@ export const ProjectsPage = () => {
                         alt={project.name}
                         src={project.imageUrl}
                         crossOrigin="anonymous"
+                        fallback={logo}
                         style={{
                           width: "100%",
                           height: "auto",

@@ -1,6 +1,5 @@
-/* eslint-disable react-refresh/only-export-components */
-import React, { useContext, useState } from "react";
-import { createContext, useEffect } from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { ITeam } from "../types/ITeam";
 import { ITeamMember } from "../types/ITeamMember";
 import { IArchivedMember } from "../types/IArchivedMember";
@@ -21,34 +20,7 @@ import { ITextReference } from "../types/ITextReference";
 import { IImageReference } from "../types/IImageReference";
 import { IProject } from "../types/IProject";
 import { ISubTeam } from "../types/ISubTeam";
-
-interface DataContextModel {
-  teams: ITeam[];
-  teamMembers: ITeamMember[];
-  archivedMembers: IArchivedMember[];
-  sponsors: ISponsor[];
-  sponsorTypes: ISponsorType[];
-  textReferences: ITextReference[];
-  imageReferences: IImageReference[];
-  projects: IProject[];
-  subTeams: ISubTeam[];
-  isLoading: boolean;
-}
-
-const defaultValue: DataContextModel = {
-  archivedMembers: [],
-  teamMembers: [],
-  teams: [],
-  sponsors: [],
-  sponsorTypes: [],
-  textReferences: [],
-  imageReferences: [],
-  projects: [],
-  subTeams: [],
-  isLoading: true,
-};
-
-const dataContext = createContext(defaultValue);
+import { DataContext, DataContextModel } from "./Contexts";
 
 type Props = {
   children?: React.ReactNode;
@@ -138,11 +110,6 @@ export const DataContextProvider = (props: Props) => {
   };
 
   return (
-    <dataContext.Provider value={value}>{props.children}</dataContext.Provider>
+    <DataContext.Provider value={value}>{props.children}</DataContext.Provider>
   );
-};
-
-export const useDataContext = () => {
-  const context = useContext(dataContext);
-  return context;
 };

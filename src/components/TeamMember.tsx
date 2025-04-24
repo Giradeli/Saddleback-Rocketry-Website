@@ -27,6 +27,8 @@ export const TeamMember = (props: Props) => {
           alt={props.name}
           src={props.image}
           style={{ width: "256px", height: "256px", objectFit: "cover" }}
+          scaleToW={256}
+          scaleToH={256}
         />
       </Box>
       <Typography sx={{ marginTop: 1 }} fontWeight={500} variant="body2">

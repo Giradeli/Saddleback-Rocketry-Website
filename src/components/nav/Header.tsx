@@ -52,7 +52,10 @@ export const Header = () => {
                   },
                 }}
               >
-                <Link to="/">
+                <Link
+                  to="/"
+                  style={{ width: "fit-content", userSelect: "none" }}
+                >
                   <Image
                     src={logo}
                     alt="Saddleback Rocketry"
