@@ -1,8 +1,10 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import { Image } from "./components/Image";
 import roundLogo from "./assets/RoundLogoNoText.webp";
+import MountainL from "./assets/sb_mountain_l_vb.svg";
+import MountainR from "./assets/sb_mountain_r_vb.svg";
 
 type Props = {
   loading: boolean;
@@ -50,17 +52,34 @@ export const Loader = (props: Props) => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap: 8,
+        // paddingTop: "10vh",
+        gap: 12,
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        zIndex: 9999,
+        zIndex: 10000,
         backgroundColor: theme.palette.primary.dark,
         transition: "opacity 0.15s ease-in-out",
         opacity: props.loading ? 1 : 0,
       })}
     >
+      <Typography
+        variant="h5"
+        color="secondary"
+        textAlign={"center"}
+        minWidth={200}
+        sx={{
+          zIndex: 10001,
+          ":after": {
+            position: "absolute",
+            content: `'${textEllipsis}'`,
+          },
+        }}
+      >
+        Loading
+      </Typography>
+
       <Box
         sx={{
           width: { xs: "75vw", md: "25vw" },
@@ -68,6 +87,7 @@ export const Loader = (props: Props) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          zIndex: 10001,
         }}
       >
         <Box
@@ -113,19 +133,76 @@ export const Loader = (props: Props) => {
         </Box>
       </Box>
       <Typography
-        variant="h5"
+        variant="h1"
         color="secondary"
         textAlign={"center"}
         minWidth={200}
         sx={{
-          ":after": {
-            position: "absolute",
-            content: `'${textEllipsis}'`,
-          },
+          zIndex: 10001,
+          marginTop: 4,
         }}
       >
-        Loading
+        Saddleback Rocketry
       </Typography>
+      <Box
+        sx={{
+          position: "fixed",
+          display: "flex",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          pointerEvents: "none",
+        }}
+      >
+        <Container maxWidth="xl" sx={{ position: "relative" }}>
+          <Box
+            sx={{
+              position: "absolute",
+              left: 0,
+              display: "flex",
+              alignItems: "end",
+              height: "100%",
+              width: "100%",
+              "& svg": {
+                width: "100%",
+                height: "auto",
+                minWidth: "32vw",
+                "& *": {
+                  stroke: "transparent !important",
+                  fill: "#62041F !important",
+                },
+              },
+              paddingRight: "45vw",
+            }}
+          >
+            <MountainL />
+          </Box>
+          <Box
+            sx={{
+              position: "absolute",
+              right: 0,
+              display: "flex",
+              alignItems: "end",
+              height: "100%",
+              width: "100%",
+              justifyContent: "end",
+              paddingLeft: "25vw",
+              "& svg": {
+                width: "100%",
+                height: "auto",
+                minWidth: "50vw",
+                "& *": {
+                  stroke: "transparent !important",
+                  fill: "#760525 !important",
+                },
+              },
+            }}
+          >
+            <MountainR />
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 };
