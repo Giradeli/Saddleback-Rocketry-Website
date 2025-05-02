@@ -27,24 +27,16 @@ export const BaseLayout = () => {
           <Box
             sx={{
               position: "absolute",
-              // top: "50%",
-              // bottom: "5vw",
-              // right: "50%",
-              // left: "50%",
-              // transform: "translateX(-50%) translateY(-50%);",
               paddingBottom: { xs: "15vh", xl: "22vh" },
               marginLeft: { xs: "0", xl: "-2vw" },
               display: "flex",
               alignItems: "end",
               height: "100%",
               width: "100%",
-              // maxHeight: "50vh",
               justifyContent: "center",
-              // paddingLeft: "25vw",
               "& svg": {
                 width: "50%",
                 height: "auto",
-                // minWidth: "50vw",
                 "& *": {
                   stroke: "transparent !important",
                   fill: "#DFDFDF !important",

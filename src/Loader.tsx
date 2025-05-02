@@ -52,7 +52,6 @@ export const Loader = (props: Props) => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        // paddingTop: "10vh",
         gap: 12,
         top: 0,
         left: 0,
