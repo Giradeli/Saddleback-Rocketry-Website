@@ -27,6 +27,7 @@ export const Sponsor = (props: Props) => {
               width: width,
               maxWidth: width,
               minWidth: width,
+              objectFit: "contain",
             }}
             alt={props.name}
             src={props.imageUrl}
