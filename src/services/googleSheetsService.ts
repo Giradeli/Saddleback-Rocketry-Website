@@ -31,8 +31,6 @@ const projectsUrl =
 const subTeamsUrl =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcrs6dIfOD9t4LndmXn07Lurn95FdNO-54EhC4UzveA2-SeB9mqmg0WElVpKLZ49HkBWEQe9G5OOKK/pub?gid=831565707&single=true&output=csv";
 
-const gDriveRegex = /^https:\/\/drive.google.com\//;
-
 export const getTeams = async () => {
   const response = await fetch(teamsUrl);
   const text = await response.text();
@@ -59,7 +57,7 @@ export const getTeamMembers = async () => {
     name: x[0],
     team: x[1],
     title: x[2] ? x[2] : undefined,
-    imageUrl: x[3] && x[3].match(gDriveRegex) ? x[3] : undefined,
+    imageUrl: x[3],
   }));
 
   return members;
@@ -78,7 +76,7 @@ export const getOldTeamMembers = async () => {
     name: x[0],
     team: x[1],
     title: x[2] ? x[2] : undefined,
-    imageUrl: x[3] && x[3].match(gDriveRegex) ? x[3] : undefined,
+    imageUrl: x[3],
     years: x[4]
       ? x[4].split(",").map((x) => Number.parseInt(x.trim()))
       : undefined,
