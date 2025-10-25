@@ -23,7 +23,7 @@ export interface GetProxyUrlOptions {
 export const defaultProxyUrlOptions: GetProxyUrlOptions = {
   width: 1024,
   height: 1024,
-  quality: 80,
+  quality: 90,
   format: "webp",
   fit: "scale-down",
   compression: "fast",
